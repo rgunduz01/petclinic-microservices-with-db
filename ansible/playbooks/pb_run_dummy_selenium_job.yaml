@@ -1,4 +1,4 @@
-hosts: all
+- hosts: all
   tasks:
   - name: run dummy selenium job
     shell: "docker run --rm -v {{ workspace }}:{{ workspace }} -w {{ workspace }} clarusway/selenium-py-chrome:latest python {{ item }}"
