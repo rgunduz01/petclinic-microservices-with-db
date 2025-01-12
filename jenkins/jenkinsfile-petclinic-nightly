@@ -104,7 +104,7 @@ pipeline {
         stage('Deploy App on Kubernetes cluster'){
             steps {
                 echo 'Deploying App on Kubernetes'
-                sh "envsubst < k8s/petclinic_chart/values-template.yaml >> k8s/petclinic_chart/values.yaml"
+                sh "envsubst < k8s/petclinic_chart/values-template.yaml > k8s/petclinic_chart/values.yaml"
                 sh "sed -i s/HELM_VERSION/4/ k8s/petclinic_chart/Chart.yaml"
                 sh "helm repo add stable-petclinic s3://petclinic-helm-charts-rana-petclinic/stable/myapp/"
                 sh "helm package k8s/petclinic_chart"
